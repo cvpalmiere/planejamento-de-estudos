@@ -1,193 +1,344 @@
-/* ========== TELA DE LOGIN ========== */
-.login-container {
+/* ===== NOVO HEADER (IGUAL AO SEU EXEMPLO) ===== */
+.studyos-header {
+    background: linear-gradient(135deg, #1a1f2e 0%, #0f1422 100%);
+    color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    border-bottom: 3px solid #3b82f6;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.2rem;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.logo p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    color: #a0a7b9;
+    border-left: 3px solid #3b82f6;
+    padding-left: 1rem;
+    margin-top: 0.3rem;
+}
+
+/* BOTÕES DE NAVEGAÇÃO (IGUAL AO SEU EXEMPLO) */
+.nav-buttons-container {
     display: flex;
-    align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #0a0f1f 0%, #1a1f33 100%);
-    position: relative;
-    overflow: hidden;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    max-width: 1200px;
+    margin: 1rem auto;
 }
 
-.login-container::before {
-    content: '';
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
-    animation: rotate 20s linear infinite;
-}
-
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.login-card {
-    background: rgba(30, 38, 57, 0.95);
+.nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.05);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    padding: 40px;
-    width: 90%;
-    max-width: 400px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    position: relative;
-    z-index: 1;
-    animation: fadeInUp 0.6s ease;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.login-logo {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.login-logo i {
-    font-size: 4rem;
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
-}
-
-.login-logo h1 {
-    font-size: 2.5rem;
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 0;
-}
-
-.login-subtitle {
-    text-align: center;
-    color: var(--text-muted);
-    margin-bottom: 30px;
+    color: #cbd5e1;
+    padding: 0.7rem 1.5rem;
+    border-radius: 40px;
+    font-weight: 500;
+    transition: all 0.2s;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    border: none;
     font-size: 0.95rem;
 }
 
-.input-group {
-    display: flex;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    margin-bottom: 20px;
-    padding: 5px 15px;
-    transition: all 0.3s ease;
-}
-
-.input-group:focus-within {
-    border-color: var(--ic-primary);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-}
-
-.input-group i {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-    margin-right: 10px;
-}
-
-.input-group input {
-    background: none;
-    border: none;
-    color: var(--text-primary);
-    font-size: 1rem;
-    padding: 12px 0;
-    width: 100%;
-    outline: none;
-}
-
-.input-group input::placeholder {
-    color: var(--text-muted);
-}
-
-.btn-login {
-    width: 100%;
-    padding: 14px;
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-    border: none;
-    border-radius: 12px;
+.nav-btn:hover {
+    background: #3b82f6;
     color: white;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+}
+
+.nav-btn.active {
+    background: #3b82f6;
+    color: white;
+}
+
+.nav-btn svg {
+    stroke: currentColor;
+}
+
+/* INFO DO USUÁRIO (CÓPIA DO SEU EXEMPLO) */
+.user-info-bar {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    transition: all 0.3s ease;
+    gap: 1rem;
+    background: rgba(0,0,0,0.2);
+    padding: 0.6rem 1.5rem;
+    border-radius: 40px;
+    flex-wrap: wrap;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    max-width: 1200px;
+    margin: 0.5rem auto 0;
+}
+
+.user-name {
+    color: white;
+    font-weight: 600;
+}
+
+.user-badge {
+    padding: 0.3rem 1rem;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.user-badge.student {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+}
+
+.user-badge.turma {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+}
+
+.notification-icon {
     position: relative;
+    color: white;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ef4444;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* BOTÃO LOGOUT (CÓPIA DO SEU) */
+.btn-logout {
+    background: transparent;
+    border: 1px solid #3b82f6;
+    color: #3b82f6;
+    padding: 0.4rem 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    margin-left: 0.5rem;
+}
+
+.btn-logout:hover {
+    background: #3b82f6;
+    color: white;
+}
+
+/* MAIN CONTENT (AJUSTADO PELO HEADER FIXO) */
+.studyos-main {
+    margin-top: 180px; /* Altura do header */
+    padding: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+/* CARDS DE PRAZOS URGENTES (IGUAL AO SEU) */
+.urgent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.urgent-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.urgent-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--danger);
+    box-shadow: 0 10px 30px -10px var(--danger);
+}
+
+/* TIMER CARD */
+.timer-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.timer-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.timer-header svg {
+    color: var(--success);
+}
+
+.timer-progress-container {
+    height: 10px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 5px;
+    margin: 1rem 0;
     overflow: hidden;
 }
 
-.btn-login::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
+.timer-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #34d399);
+    transition: width 0.3s;
 }
 
-.btn-login:hover::before {
-    width: 300px;
-    height: 300px;
-}
-
-.btn-login:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.5);
-}
-
-.btn-login i {
-    font-size: 1.1rem;
-}
-
-.login-footer {
-    margin-top: 30px;
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    border-top: 1px solid var(--border);
-    padding-top: 20px;
-}
-
-/* Ajuste para o app-container */
-.app-container {
-    display: none;
-    /* Mantém todos os estilos que já existiam */
-}
-
-.app-container.active {
+.timer-buttons {
     display: flex;
+    gap: 0.8rem;
 }
 
-/* Responsividade para login */
-@media (max-width: 480px) {
-    .login-card {
-        padding: 30px 20px;
+.timer-btn {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.timer-btn:hover {
+    background: var(--bg-tertiary);
+    color: white;
+}
+
+/* GRADE DE ESTUDO */
+.section-title {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+    color: var(--text-primary);
+}
+
+.study-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.study-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.study-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.card-header {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.study-card.manha .card-header { background: rgba(249, 115, 22, 0.1); }
+.study-card.tarde .card-header { background: rgba(59, 130, 246, 0.1); }
+.study-card.noite .card-header { background: rgba(139, 92, 246, 0.1); }
+
+.period-icon {
+    font-size: 1.5rem;
+}
+
+.period-time {
+    margin-left: auto;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.card-content {
+    padding: 1rem;
+    min-height: 100px;
+}
+
+/* SUGESTÕES GRID */
+.suggestions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.suggestion-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.suggestion-item:hover {
+    background: var(--bg-tertiary);
+}
+
+@media (max-width: 768px) {
+    .studyos-main {
+        margin-top: 220px;
     }
     
-    .login-logo i {
-        font-size: 3rem;
+    .nav-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
     }
     
-    .login-logo h1 {
-        font-size: 2rem;
+    .user-info-bar {
+        flex-direction: column;
     }
 }
