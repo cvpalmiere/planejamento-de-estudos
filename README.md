@@ -18,17 +18,6 @@ O **StudyOS** é um sistema web desenvolvido exclusivamente para organizar a rot
 - 🚫 **Finais de semana OFF** (respeitando seu descanso)
 - 📊 **Gráficos de progresso** e estatísticas
 
-## 🚀 Acesse o Sistema
-
-🔗 **URL:** [https://SEU-USUARIO.github.io/studyos](https://SEU-USUARIO.github.io/studyos)
-
-### 🔐 Dados de Acesso
-
-| Campo | Valor |
-|-------|-------|
-| **Usuário** | `Carla` |
-| **Senha** | `Cacau` |
-
 > ⚠️ O site é público, mas o acesso é protegido por login. Apenas quem sabe a senha consegue visualizar o conteúdo.
 
 ## 📚 Disciplinas Incluídas
