@@ -45,13 +45,380 @@
 
     <!-- SISTEMA PRINCIPAL (INICIALMENTE OCULTO) -->
     <div class="app-container" id="app-container" style="display: none;">
-        <!-- ... CONTEÚDO COMPLETO DO SISTEMA ... -->
-        <!-- (Todo o código que já tínhamos antes) -->
-        <!-- Vou colocar o conteúdo completo abaixo -->
+        <!-- CONTEÚDO DO SISTEMA (copia aqui) -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <span>StudyOS</span>
+            </div>
+            
+            <div class="user-info">
+                <i class="fas fa-user-graduate"></i>
+                <span>Carla Vicktoria</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-tab="hoje">
+                    <i class="fas fa-calendar-day"></i>
+                    <span>Hoje</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="notas">
+                    <i class="fas fa-sticky-note"></i>
+                    <span>Notas</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="prazos">
+                    <i class="fas fa-clock"></i>
+                    <span>Prazos</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="calendario">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Calendário</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="plano-aulas">
+                    <i class="fas fa-book-open"></i>
+                    <span>Planos de Aula</span>
+                </a>
+                <a href="#" class="nav-item" data-tab="progresso">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Progresso</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="data-hora" id="data-hora-sidebar"></div>
+                <div class="tempo-disponivel">
+                    <i class="fas fa-hourglass-half"></i>
+                    <span>2h30 disponíveis hoje</span>
+                </div>
+                <div class="off-days">
+                    <i class="fas fa-umbrella-beach"></i>
+                    <span>Sábados e Domingos OFF</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="top-bar">
+                <div class="top-bar-left">
+                    <button class="menu-toggle" id="menuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="saudacao" id="saudacao"></div>
+                </div>
+                <div class="top-bar-right">
+                    <div class="data-completa" id="data-completa"></div>
+                </div>
+            </div>
+
+            <div class="tab-content">
+                <!-- ABA HOJE -->
+                <div class="tab-pane active" id="tab-hoje">
+                    <div class="hoje-container">
+                        <div class="prazos-urgentes" id="prazos-urgentes">
+                            <h3><i class="fas fa-exclamation-triangle"></i> Prazos Urgentes</h3>
+                            <div class="urgentes-lista" id="urgentes-lista"></div>
+                        </div>
+
+                        <div class="timer-container">
+                            <div class="timer-info">
+                                <i class="fas fa-clock"></i>
+                                <span>Meta de hoje: <strong>2h30</strong> de estudo</span>
+                            </div>
+                            <div class="timer-barra">
+                                <div class="timer-progresso" id="timer-progresso" style="width: 0%"></div>
+                            </div>
+                            <div class="timer-controles">
+                                <button class="btn-timer" onclick="iniciarTimer()"><i class="fas fa-play"></i> Iniciar</button>
+                                <button class="btn-timer" onclick="pausarTimer()"><i class="fas fa-pause"></i> Pausar</button>
+                                <button class="btn-timer" onclick="zerarTimer()"><i class="fas fa-stop"></i> Zerar</button>
+                            </div>
+                        </div>
+
+                        <div class="grade-dia">
+                            <h2><i class="fas fa-sun"></i> Hoje é <span id="dia-semana"></span></h2>
+                            
+                            <div class="periodos">
+                                <div class="periodo manha">
+                                    <div class="periodo-header">
+                                        <i class="fas fa-cloud-sun"></i>
+                                        <h3>Manhã (Pré-aula)</h3>
+                                        <span class="horario">08:00 - 12:00</span>
+                                    </div>
+                                    <div class="periodo-conteudo" id="periodo-manha"></div>
+                                </div>
+
+                                <div class="periodo tarde">
+                                    <div class="periodo-header">
+                                        <i class="fas fa-sun"></i>
+                                        <h3>Tarde (Aula)</h3>
+                                        <span class="horario">14:00 - 18:00</span>
+                                    </div>
+                                    <div class="periodo-conteudo" id="periodo-tarde"></div>
+                                </div>
+
+                                <div class="periodo noite">
+                                    <div class="periodo-header">
+                                        <i class="fas fa-moon"></i>
+                                        <h3>Noite (Cursos Extras)</h3>
+                                        <span class="horario">19:00 - 22:00</span>
+                                    </div>
+                                    <div class="periodo-conteudo" id="periodo-noite"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="atividades-hoje">
+                            <h3><i class="fas fa-tasks"></i> Sugestões de estudo para hoje</h3>
+                            <div class="lista-sugestoes" id="lista-sugestoes"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ABA NOTAS -->
+                <div class="tab-pane" id="tab-notas">
+                    <div class="notas-container">
+                        <h2><i class="fas fa-sticky-note"></i> Caderno Digital</h2>
+                        
+                        <div class="materias-tabs">
+                            <button class="materia-tab active" data-materia="es">🔧 ES</button>
+                            <button class="materia-tab" data-materia="ic">💻 IC</button>
+                            <button class="materia-tab" data-materia="lp">🐍 LP</button>
+                            <button class="materia-tab" data-materia="bd">🗄️ BD</button>
+                            <button class="materia-tab" data-materia="bootcamp">🚀 Bootcamp</button>
+                            <button class="materia-tab" data-materia="fundamentos">📐 Fundamentos</button>
+                        </div>
+
+                        <div class="notas-editor-container" id="notas-container">
+                            <p class="text-muted">Selecione uma matéria ou crie uma nova nota</p>
+                        </div>
+                        
+                        <button class="btn-nova-nota" onclick="criarNovaNota()">
+                            <i class="fas fa-plus"></i> Nova Nota
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ABA PRAZOS -->
+                <div class="tab-pane" id="tab-prazos">
+                    <div class="prazos-container">
+                        <h2><i class="fas fa-clock"></i> Todos os Prazos</h2>
+                        
+                        <div class="prazos-filtros">
+                            <button class="filtro-btn active" data-filtro="todos">Todos</button>
+                            <button class="filtro-btn" data-filtro="prova">Provas</button>
+                            <button class="filtro-btn" data-filtro="trabalho">Trabalhos</button>
+                            <button class="filtro-btn" data-filtro="entrega">Entregas</button>
+                        </div>
+
+                        <div class="prazos-lista" id="prazos-lista"></div>
+                    </div>
+                </div>
+
+                <!-- ABA CALENDÁRIO -->
+                <div class="tab-pane" id="tab-calendario">
+                    <div class="calendario-container">
+                        <h2><i class="fas fa-calendar-alt"></i> Calendário de Prazos</h2>
+                        
+                        <div class="calendario-header">
+                            <button onclick="mesAnterior()"><i class="fas fa-chevron-left"></i></button>
+                            <h3 id="mes-ano">Março 2026</h3>
+                            <button onclick="proximoMes()"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        
+                        <div class="calendario-grid" id="calendario-grid"></div>
+                        
+                        <div class="calendario-legenda">
+                            <span><span class="legenda-cor" style="background: #ef4444"></span> Prova</span>
+                            <span><span class="legenda-cor" style="background: #f59e0b"></span> Trabalho</span>
+                            <span><span class="legenda-cor" style="background: #10b981"></span> Entrega</span>
+                            <span><span class="legenda-cor" style="background: #3b82f6"></span> Estudo</span>
+                        </div>
+                        
+                        <div class="proximos-prazos-lista" id="proximos-prazos-lista"></div>
+                    </div>
+                </div>
+
+                <!-- ABA PLANOS DE AULA -->
+                <div class="tab-pane" id="tab-plano-aulas">
+                    <div class="plano-aulas-container">
+                        <h2><i class="fas fa-book-open"></i> Planos de Aula Detalhados</h2>
+                        
+                        <div class="materias-planos">
+                            <div class="plano-materia-card" onclick="mostrarPlanoAula('es')">
+                                <div class="plano-icon es-icon">🔧</div>
+                                <h3>Engenharia de Software</h3>
+                                <p>Turma C · Terças 14h</p>
+                            </div>
+                            <div class="plano-materia-card" onclick="mostrarPlanoAula('ic')">
+                                <div class="plano-icon ic-icon">💻</div>
+                                <h3>Introdução à Computação</h3>
+                                <p>Turma C · Quartas 14h</p>
+                            </div>
+                            <div class="plano-materia-card" onclick="mostrarPlanoAula('lp')">
+                                <div class="plano-icon lp-icon">🐍</div>
+                                <h3>Lógica de Programação</h3>
+                                <p>Turma C · Quintas 14h</p>
+                            </div>
+                            <div class="plano-materia-card" onclick="mostrarPlanoAula('bd')">
+                                <div class="plano-icon bd-icon">🗄️</div>
+                                <h3>Banco de Dados I</h3>
+                                <p>Turma C · Sextas 14h</p>
+                            </div>
+                            <div class="plano-materia-card" onclick="mostrarPlanoAula('bootcamp')">
+                                <div class="plano-icon bootcamp-icon">🚀</div>
+                                <h3>Bootcamp I</h3>
+                                <p>Online · Webaulas Quintas 8h</p>
+                            </div>
+                            <div class="plano-materia-card" onclick="mostrarPlanoAula('fundamentos')">
+                                <div class="plano-icon fundamentos-icon">📐</div>
+                                <h3>Fundamentos de Engenharia</h3>
+                                <p>Online · Segundas (dia livre)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="plano-detalhado" id="plano-detalhado">
+                            <h3 id="plano-titulo">Clique em uma matéria para ver o plano de aulas</h3>
+                            <div class="plano-tabela" id="plano-tabela"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ABA PROGRESSO -->
+                <div class="tab-pane" id="tab-progresso">
+                    <div class="progresso-container">
+                        <h2><i class="fas fa-chart-line"></i> Seu Progresso</h2>
+                        
+                        <div class="cards-resumo">
+                            <div class="card-resumo">
+                                <div class="resumo-icon es-icon">🔧</div>
+                                <div>
+                                    <h4>Eng. Software</h4>
+                                    <span class="resumo-valor" id="progresso-es">0%</span>
+                                </div>
+                            </div>
+                            <div class="card-resumo">
+                                <div class="resumo-icon ic-icon">💻</div>
+                                <div>
+                                    <h4>Intro. Computação</h4>
+                                    <span class="resumo-valor" id="progresso-ic">0%</span>
+                                </div>
+                            </div>
+                            <div class="card-resumo">
+                                <div class="resumo-icon lp-icon">🐍</div>
+                                <div>
+                                    <h4>Lógica Prog.</h4>
+                                    <span class="resumo-valor" id="progresso-lp">0%</span>
+                                </div>
+                            </div>
+                            <div class="card-resumo">
+                                <div class="resumo-icon bd-icon">🗄️</div>
+                                <div>
+                                    <h4>Banco de Dados</h4>
+                                    <span class="resumo-valor" id="progresso-bd">0%</span>
+                                </div>
+                            </div>
+                            <div class="card-resumo">
+                                <div class="resumo-icon bootcamp-icon">🚀</div>
+                                <div>
+                                    <h4>Bootcamp</h4>
+                                    <span class="resumo-valor" id="progresso-bootcamp">0%</span>
+                                </div>
+                            </div>
+                            <div class="card-resumo">
+                                <div class="resumo-icon fundamentos-icon">📐</div>
+                                <div>
+                                    <h4>Fundamentos</h4>
+                                    <span class="resumo-valor" id="progresso-fundamentos">0%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grafico-container">
+                            <h3>Horas de Estudo por Matéria</h3>
+                            <canvas id="grafico-barras" width="400" height="300"></canvas>
+                        </div>
+                        
+                        <div class="historico-conclusoes" id="historico-conclusoes">
+                            <h3>Últimas Conclusões</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
+    <!-- MODAIS -->
+    <div class="modal" id="modal-concluir">
+        <div class="modal-conteudo">
+            <h3><i class="fas fa-check-circle"></i> Concluir Atividade</h3>
+            <p id="modal-atividade-nome"></p>
+            
+            <div class="modal-form">
+                <label>Quantos dias de estudo você gastou no total?</label>
+                <div class="opcoes-dias">
+                    <label class="opcao-dia"><input type="radio" name="dias-gastos" value="1"> 1 dia</label>
+                    <label class="opcao-dia"><input type="radio" name="dias-gastos" value="2"> 2 dias</label>
+                    <label class="opcao-dia"><input type="radio" name="dias-gastos" value="3"> 3 dias</label>
+                    <label class="opcao-dia"><input type="radio" name="dias-gastos" value="4"> 4 dias</label>
+                    <label class="opcao-dia"><input type="radio" name="dias-gastos" value="5"> 5 dias</label>
+                    <label class="opcao-dia"><input type="radio" name="dias-gastos" value="7"> 7 dias</label>
+                    <label class="opcao-dia"><input type="radio" name="dias-gastos" value="10"> 10 dias</label>
+                    <label class="opcao-dia">
+                        <input type="radio" name="dias-gastos" value="outro"> Outro:
+                        <input type="number" id="dias-outro" min="1" max="30" disabled>
+                    </label>
+                </div>
+                
+                <label>Horas estudadas por dia (média):</label>
+                <input type="number" id="horas-por-dia" min="0.5" max="8" step="0.5" value="2.5">
+                
+                <label>Anotações sobre a atividade (opcional):</label>
+                <textarea id="anotacoes-conclusao" rows="3" placeholder="O que aprendeu? Dificuldades?"></textarea>
+            </div>
+            
+            <div class="modal-acoes">
+                <button class="btn-secundario" onclick="fecharModal()">Cancelar</button>
+                <button class="btn-primario" onclick="confirmarConclusao()">Confirmar Conclusão</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-nota">
+        <div class="modal-conteudo">
+            <h3><i class="fas fa-plus-circle"></i> Nova Nota</h3>
+            
+            <div class="modal-form">
+                <label>Matéria:</label>
+                <select id="nota-materia">
+                    <option value="es">Engenharia de Software</option>
+                    <option value="ic">Introdução à Computação</option>
+                    <option value="lp">Lógica de Programação</option>
+                    <option value="bd">Banco de Dados I</option>
+                    <option value="bootcamp">Bootcamp I</option>
+                    <option value="fundamentos">Fundamentos de Engenharia</option>
+                </select>
+                
+                <label>Título:</label>
+                <input type="text" id="nota-titulo" placeholder="Ex: Resumo sobre Requisitos">
+                
+                <label>Conteúdo:</label>
+                <textarea id="nota-conteudo" rows="8" placeholder="Escreva sua nota aqui..."></textarea>
+                
+                <label>Tags (separadas por vírgula):</label>
+                <input type="text" id="nota-tags" placeholder="Ex: importante, revisão, código">
+            </div>
+            
+            <div class="modal-acoes">
+                <button class="btn-secundario" onclick="fecharModalNota()">Cancelar</button>
+                <button class="btn-primario" onclick="salvarNota()">Salvar Nota</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast-container" id="toast-container"></div>
+
     <script>
-        // Função de login simplificada (o resto do código vai no script.js)
         function fazerLogin() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
@@ -59,7 +426,6 @@
             if (username === 'Carla' && password === 'Cacau') {
                 document.getElementById('login-container').style.display = 'none';
                 document.getElementById('app-container').style.display = 'flex';
-                // Inicializar o sistema após login
                 if (typeof inicializarSistema === 'function') {
                     inicializarSistema();
                 }
@@ -68,7 +434,6 @@
             }
         }
 
-        // Permitir login com Enter
         document.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 fazerLogin();
